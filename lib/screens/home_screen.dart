@@ -6,7 +6,7 @@ import 'package:flutter_with_bloc_pattern_and_graphql/services/api_query.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  // TODO: if anything goes wrong then use the bloc.getData() method inside the init method
+  /// TODO: if anything goes wrong then use the bloc.getData() method inside the init method
   @override
   Widget build(BuildContext context) {
     bloc.getData(query);
@@ -17,25 +17,25 @@ class HomeScreen extends StatelessWidget {
           if (snapshot.hasData && snapshot.data != null) {
             if (snapshot.data!.dataList.isEmpty) {
               return const Text(
-                "No Data",
+                'No Data',
               );
             }
-            print("Snapshot: ${snapshot.data}");
+            print('Snapshot: ${snapshot.data}');
             return ListView.builder(
                 itemCount: snapshot.data!.dataList.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(
+                    leading: Text(
                       snapshot.data!.dataList[index].id.toString(),
                     ),
-                    subtitle: Text(
+                    title: Text(
                       snapshot.data!.dataList[index].name.toString(),
                     ),
                   );
                 });
           } else if (snapshot.hasError) {
-            // the below line of code is for deubgging purpose
-            print("The error is: ${snapshot.error}");
+            /// the below line of code is for deubgging purpose
+            print('The error is: ${snapshot.error}');
 
             return Center(child: Text(snapshot.error.toString()));
           } else {
