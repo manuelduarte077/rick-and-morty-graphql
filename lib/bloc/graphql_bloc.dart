@@ -16,8 +16,8 @@ class GraphQLBloc {
   /// getting the data stream from the PublishSubject<List<HomeModel>>
   Stream<ItemData> get dataStream => _dataFetcher.stream;
 
-  /// the code below is used to create a method for getting the data from graphql
-  /// and adding them to  the stream
+  /// the code below is used to create a method for getting the data from
+  /// graphql and adding them to  the stream
 
   getData(String query) async {
     try {
