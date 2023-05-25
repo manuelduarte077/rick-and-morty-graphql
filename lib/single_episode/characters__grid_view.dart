@@ -23,7 +23,10 @@ class CharactersGridView extends StatelessWidget {
       ),
       itemCount: characters?.length,
       itemBuilder: (context, index) {
-        return CharacterCard(characters: characters, index: index);
+        return CharacterCard(
+          characters: characters,
+          index: index,
+        );
       },
     );
   }

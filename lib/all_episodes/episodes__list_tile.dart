@@ -41,9 +41,20 @@ class EpisodeTile extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      subtitle: Text(
-        episodeFromList['episode'],
-        style: const TextStyle(color: Colors.white),
+      subtitle: Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              episodeFromList['episode'],
+              style: const TextStyle(color: Colors.white),
+            ),
+            Text(
+              episodeFromList['air_date'],
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
       ),
       trailing: const Icon(
         Icons.keyboard_arrow_right,

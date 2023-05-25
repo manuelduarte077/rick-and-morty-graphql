@@ -19,7 +19,10 @@ class EpisodeCard extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: Container(
-        decoration: const BoxDecoration(color: Color(0xff87bd3f)),
+        decoration: BoxDecoration(
+          color: Colors.grey[900],
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: EpisodeTile(results, index),
       ),
     );

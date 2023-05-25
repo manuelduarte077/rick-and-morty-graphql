@@ -82,11 +82,12 @@ class _QueryBodyState extends State<QueryBody> {
             return true;
           },
           child: ListView.builder(
-              controller: _controller,
-              itemCount: results.length,
-              itemBuilder: (context, index) {
-                return EpisodeCard(results: results, index: index);
-              }),
+            controller: _controller,
+            itemCount: results.length,
+            itemBuilder: (context, index) {
+              return EpisodeCard(results: results, index: index);
+            },
+          ),
         );
       },
     );

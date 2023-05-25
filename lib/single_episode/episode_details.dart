@@ -14,7 +14,6 @@ class EpisodeDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 5,
         title: Text(
           '${episode!} - ${episodeTitle!}',
           overflow: TextOverflow.ellipsis,
