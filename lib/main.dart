@@ -24,8 +24,8 @@ class RickAndMortyApp extends StatelessWidget {
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
-        title: 'Rick and Morty TV',
-        theme: ThemeData(primaryColor: const Color.fromRGBO(58, 66, 86, 1.0)),
+        theme: ThemeData(useMaterial3: true),
+        themeMode: ThemeMode.light,
         home: const EpisodesList(),
       ),
     );

@@ -16,37 +16,60 @@ class EpisodeTile extends StatelessWidget {
     final episodeFromList = results![index];
 
     return ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-        leading: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            decoration: const BoxDecoration(
-                border: Border(
-                    right: BorderSide(width: 1.0, color: Colors.white24))),
-            child: Text(
-              episodeFromList['id'],
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            )),
-        title: Text(
-          episodeFromList['name'],
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      contentPadding:
+          const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+      leading: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: const BoxDecoration(
+          border: Border(
+            right: BorderSide(width: 1.0, color: Colors.white24),
+          ),
         ),
-        subtitle: Text(
-          episodeFromList['episode'],
-          style: const TextStyle(color: Colors.white),
+        child: Text(
+          episodeFromList['id'],
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
         ),
-        trailing: const Icon(Icons.keyboard_arrow_right,
-            color: Colors.white, size: 30.0),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => EpisodeDetails(
-                id: episodeFromList['id'],
-                episodeTitle: episodeFromList['name'],
-                episode: episodeFromList['episode'],
-              ),
-            )));
+      ),
+      title: Text(
+        episodeFromList['name'],
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      subtitle: Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              episodeFromList['episode'],
+              style: const TextStyle(color: Colors.white),
+            ),
+            Text(
+              episodeFromList['air_date'],
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+      trailing: const Icon(
+        Icons.keyboard_arrow_right,
+        color: Colors.white,
+        size: 30,
+      ),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => EpisodeDetails(
+            id: episodeFromList['id'],
+            episodeTitle: episodeFromList['name'],
+            episode: episodeFromList['episode'],
+          ),
+        ),
+      ),
+    );
   }
 }

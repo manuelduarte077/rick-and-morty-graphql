@@ -10,6 +10,7 @@ const String allEpisodesQuery = '''
         results {
           id
           name
+          air_date
           episode
         }
       }
