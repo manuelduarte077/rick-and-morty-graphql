@@ -16,25 +16,26 @@ class SingleEpisodeQueryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Query(
-        options: QueryOptions(
-            document: gql(singleEpisodeQuery), variables: {'id': id}),
-        builder: (QueryResult result,
-            {Refetch? refetch, FetchMore? fetchMore}) {
-          if (result.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
+      options: QueryOptions(
+        document: gql(singleEpisodeQuery),
+        variables: {'id': id},
+      ),
+      builder: (QueryResult result, {Refetch? refetch, FetchMore? fetchMore}) {
+        if (result.isLoading) {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        }
+        if (result.hasException) {
+          return Text(result.exception.toString());
+        }
 
-          List? characters = result.data?['episode']?['characters'];
+        List? characters = result.data?['episode']?['characters'];
 
-          if (characters == null) {
-            return const Text('no results');
-          }
+        if (characters == null) {
+          return const Text('no results');
+        }
 
-          return CharactersGridView(characters: characters);
-        },
-      );
+        return CharactersGridView(characters: characters);
+      },
+    );
   }
 }

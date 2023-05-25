@@ -14,15 +14,17 @@ class CharactersGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        padding: const EdgeInsets.all(5),
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-            maxCrossAxisExtent: 150,
-            childAspectRatio: 1),
-        itemCount: characters?.length,
-        itemBuilder: (context, index) {
-          return CharacterCard(characters: characters, index: index);
-        });
+      padding: const EdgeInsets.all(5),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 2,
+        maxCrossAxisExtent: 150,
+        childAspectRatio: 1,
+      ),
+      itemCount: characters?.length,
+      itemBuilder: (context, index) {
+        return CharacterCard(characters: characters, index: index);
+      },
+    );
   }
 }

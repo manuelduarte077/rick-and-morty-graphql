@@ -16,15 +16,16 @@ class _EpisodesList extends State<EpisodesList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 42, 48, 62),
-        appBar: AppBar(
-            elevation: 5,
-            backgroundColor: const Color.fromARGB(255, 35, 40, 53),
-            title: const Center(
-              child: Text(
-                'Rick and Morty Flutter App',
-              ),
-            )),
-        body: const QueryBody());
+      // backgroundColor: const Color.fromARGB(255, 42, 48, 62),
+      appBar: AppBar(
+        elevation: 0,
+        title: const Center(
+          child: Text(
+            'Rick and Morty Flutter App',
+          ),
+        ),
+      ),
+      body: const QueryBody(),
+    );
   }
 }

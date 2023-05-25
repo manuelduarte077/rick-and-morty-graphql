@@ -34,59 +34,61 @@ class _QueryBodyState extends State<QueryBody> {
   @override
   Widget build(BuildContext context) {
     return Query(
-        options: QueryOptions(document: gql(allEpisodesQuery)),
-        builder: (QueryResult result, {refetch, fetchMore}) {
-          if (result.isLoading && result.data == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
-          if (result.data == null && !result.hasException) {
-            return const Text('null');
-          }
-
-          List? results = result.data?['episodes']?['results'];
-
-          if (results == null) {
-            return const Text('no results');
-          }
-
-          FetchMoreOptions nextPage = FetchMoreOptions(
-            variables: {'page': page},
-            updateQuery: (previousResultData, fetchMoreResultData) {
-              final List<dynamic> moreResult = [
-                ...previousResultData?['episodes']['results'] as List<dynamic>,
-                ...fetchMoreResultData?['episodes']['results'] as List<dynamic>
-              ];
-
-              fetchMoreResultData?['episodes']['results'] = moreResult;
-
-              return fetchMoreResultData;
-            },
+      options: QueryOptions(document: gql(allEpisodesQuery)),
+      builder: (QueryResult result, {refetch, fetchMore}) {
+        if (result.isLoading && result.data == null) {
+          return const Center(
+            child: CircularProgressIndicator(),
           );
+        }
+        if (result.hasException) {
+          return Text(result.exception.toString());
+        }
+        if (result.data == null && !result.hasException) {
+          return const Text('null');
+        }
 
-          /// If the user scrolls to the bottom of the page, the next page is fetched.
-          return NotificationListener<ScrollNotification>(
-              onNotification: (scrollNotification) {
-                if (scrollNotification is ScrollEndNotification &&
-                    _controller.position.pixels >=
-                        _controller.position.maxScrollExtent &&
-                    page < 4 &&
-                    !(results.length > 40)) {
-                  fetchMore!(nextPage);
-                  page++;
-                }
-                return true;
-              },
-              child: ListView.builder(
-                  controller: _controller,
-                  itemCount: results.length,
-                  itemBuilder: (context, index) {
-                    return EpisodeCard(results: results, index: index);
-                  }));
-        });
+        List? results = result.data?['episodes']?['results'];
+
+        if (results == null) {
+          return const Text('no results');
+        }
+
+        FetchMoreOptions nextPage = FetchMoreOptions(
+          variables: {'page': page},
+          updateQuery: (previousResultData, fetchMoreResultData) {
+            final List<dynamic> moreResult = [
+              ...previousResultData?['episodes']['results'] as List<dynamic>,
+              ...fetchMoreResultData?['episodes']['results'] as List<dynamic>
+            ];
+
+            fetchMoreResultData?['episodes']['results'] = moreResult;
+
+            return fetchMoreResultData;
+          },
+        );
+
+        /// If the user scrolls to the bottom of the page, the next page is fetched.
+        return NotificationListener<ScrollNotification>(
+          onNotification: (scrollNotification) {
+            if (scrollNotification is ScrollEndNotification &&
+                _controller.position.pixels >=
+                    _controller.position.maxScrollExtent &&
+                page < 4 &&
+                !(results.length > 40)) {
+              fetchMore!(nextPage);
+              page++;
+            }
+            return true;
+          },
+          child: ListView.builder(
+              controller: _controller,
+              itemCount: results.length,
+              itemBuilder: (context, index) {
+                return EpisodeCard(results: results, index: index);
+              }),
+        );
+      },
+    );
   }
 }

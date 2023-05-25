@@ -15,19 +15,15 @@ class CharacterCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      elevation: 5,
-      margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
       child: Container(
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(58, 66, 86, 1.0)),
-          child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(55)),
-            child: GridTile(
-                child: FittedBox(
-              fit: BoxFit.fill,
-              child: Image.network(characters?[index]['image']),
-            )),
-          )),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(55)),
+        child: GridTile(
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: Image.network(characters?[index]['image']),
+          ),
+        ),
+      ),
     );
   }
 }

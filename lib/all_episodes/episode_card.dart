@@ -14,11 +14,12 @@ class EpisodeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      elevation: 5,
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: Container(
-        decoration: const BoxDecoration(color: Color.fromARGB(224, 64, 71, 84)),
+        decoration: const BoxDecoration(color: Color(0xff87bd3f)),
         child: EpisodeTile(results, index),
       ),
     );
