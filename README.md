@@ -1,11 +1,8 @@
-# rick_and_morty
+# Rick and Morty
 
 Flutter application to display information about episodes and characters from the Rick and Morty TV series.
 
-## Description
 
-Information about episodes and characters from the Rick and Morty TV series GraphQL API (https://rickandmortyapi.com/documentation/#graphql).
+## Screenshots
 
-Two-screeen UI:
-    1) Scrollable list of episodes
-    2) List of all characters in a given episode
+<img src="assets/home.png" height="450">
